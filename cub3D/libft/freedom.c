@@ -6,11 +6,12 @@
 /*   By: jtoulous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:44:28 by jtoulous          #+#    #+#             */
-/*   Updated: 2023/01/14 16:44:34 by jtoulous         ###   ########.fr       */
+/*   Updated: 2023/05/04 16:27:16 by agoichon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	free_loop(char **str)
 {
@@ -26,10 +27,31 @@ void	free_loop(char **str)
 		}
 		free (str);
 	}
+	str = NULL;
 }
 
-void	free_free(void *str1, void *str2)
+void	mega_free(char *s1, char *s2, char *s3, char *s4)
 {
-	free (str1);
-	free (str2);
+	if (s1 != NULL)
+		free (s1);
+	if (s2 != NULL)
+		free (s2);
+	if (s3 != NULL)
+		free (s3);
+	if (s4 != NULL)
+		free (s4);
 }
+
+/*void	free_lst(t_list *lst)
+{
+	t_list	*tmp;
+	
+	if ()
+	tmp = lst->next;
+	while (lst)
+	{
+		if (lst->content)
+			free (lst->content);
+			
+	}
+}*/

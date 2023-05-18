@@ -6,7 +6,7 @@
 /*   By: agoichon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 13:59:59 by agoichon          #+#    #+#             */
-/*   Updated: 2023/05/04 16:22:30 by agoichon         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:49:20 by agoichon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,15 +88,6 @@ typedef struct s_map
 {
 	unsigned int	floor;
 	unsigned int	ceiling;
-	int				f;
-	int				c;
-	int				nor;
-	int				sou;
-	int				wes;
-	int				eas;
-	int				fd;
-	int				pos;
-	int				line;
 	char			**map_cpy;
 	char			**param_cpy;
 	t_mlx			*mlx;
@@ -110,86 +101,54 @@ typedef struct s_game
 	t_player	*player;
 }			t_game;
 
-/*init.c*/
-void			init_struct(t_map *map);
-void			init_params(t_map *map);
-void			init_the_mlx(t_map *map);
+//init.c
 
-/*init2.c*/
-void			init_dir(char dir, t_player *player);
-t_player		*init_player_data(char **map, int x, int y);
+t_player	*init_player_data(char **map, int x, int y);
 
-/*utils.c*/
-void			free_map(t_map *map);	
-void			line_counter(t_map *map);
-char			*megatrim(t_map *map, const char *id, int i);
-void			free_split(char **str);
-void			end_game(t_map *map);
+//raycasting.c
+void		ray_k_string(t_map *map, t_player *player);
+void		set_pixel(t_img *frame, int x, int y, unsigned int color);
 
-/*utils2.c*/
-void			destroy_the_mlx(t_mlx *mlx, t_img *frame, t_img **tex);
-void			b_null(t_map *map);
-void			exit_error(t_map *map, char *err_msg);
-void			clear_frame(t_img *frame);
-void			count_virgule(t_map *map, char *colors);
+//raycasting_2.c
+void		draw(t_rayksting *data, t_map *map, t_player *player, int x);
 
-/*check_map.c*/
-void			check_map(t_map *map);
+//utils.c
+int			map_start(t_map *map, char **args);
+void		end_game(t_map *map);
 
-/*check_map2.c*/
-void			copy_map(t_map *map, char **argv);
-void			copy_map_utils(t_map *map, char *gnl);
-void			open_and_copy(char **argv, t_map *map);
-int 			check_connect(t_map *the_map, int j, int i);
+//utils_2.c
+void		exit_error(t_map *map, char *err_msg);
 
-/*check_params.c*/
-void			check_params(t_map *map, char **argv);
-void			load_texture(t_map *map, char *str, int i, int dir);
-void			load_color(t_map *map, char *str, int i);
+//check_map.c
+void		check_map(t_map *map);
+void		check_the_line(t_map *map, int z);
+void		connect_end_under(t_map *map, int line, int last, int last_under);
+void		connect_end_above(t_map *map, int line, int last, int last_above);
+void		connect_start_under(t_map *map, int line, int start,
+				int start_under);
+void		connect_start_above(t_map *map, int line, int start,
+				int start_above);
 
-/*handle.c*/
-void			move_forward(t_map *map, t_player *player);
-void			move_backward(t_map *map, t_player *player);
-void			move_left(t_map	*map, t_player	*player);
-void			move_right(t_map *map, t_player *player);
-void			move_view_right(t_map *map, t_player *player);
+//check_map_utils.c
+int			max_line_len(char **map);
+int			tab_count(char **to_count);
+int			*init_tab(int max_line_len);
+int			check_tab(int *check, int max);
+int			char_check(char to_check);
 
-/*handle2.c*/
-void			move_view_left(t_map *map, t_player *player);
-int				press_key(int key, void *param);
-int				press_key(int key, void *param);
-int				release_key(int key, void *param);
-int				end_game_cross(void *param);
+int			check_params(t_map *map, char *line, int start, int *check);
+char		**copy_file(t_map *map, char *file);
+void		count_virgule(t_map *map, char *colors);
 
-/*ray_K_string.c*/
-void			set_pixel(t_img *frame, int x, int y, unsigned int color);
-unsigned int	get_pixel(t_img *tex, int x, int y);
-void			calc_step(t_rayksting *data, t_player *player);
-void			rayksting_init(t_player *player, t_rayksting *data, int x);
-void			dda(t_rayksting *data, char **map);
-
-/*ray_K_string2.c*/
-void			calc_draw_params(t_rayksting *data, t_player *player);
-void			draw_roof(t_map *map, int draw_start, int *y, int x);
-void			draw_floor(t_map *map, int *y, int x);
-void			draw(t_rayksting *data, t_map *map, t_player *player, int x);
-void			ray_k_string(t_map *map, t_player *player);
-
-/*check_map_utils.c*/
-int				char_check(char to_check);
-int				check_tab(int *check, int max);
-int				*init_tab(int max_line_len);
-int				max_line_len(char **map);
-int				tab_count(char **to_count);
-
-void	connect_start_above(t_map *map, int line, int start, int start_above);
-void	connect_start_under(t_map *map, int line, int start, int start_under);
-void	check_connect_start(t_map *map, int line, int start);
-void	connect_end_above(t_map *map, int line, int last, int last_above);
-void	connect_end_under(t_map *map, int line, int last, int last_under);
-void	check_connect_end(t_map *map, int line, int last);
-int		check_from_start(t_map *map, int z);
-int		check_from_end(t_map *map, int z);
-
+int			press_key(int key, void *param);
+int			release_key(int key, void *param);
+int			end_game_cross(void *param);
+void		move_view_right(t_map *map, t_player *player);
+void		move_view_left(t_map *map, t_player *player);
+void		b_null(t_map *map);
+void		init_params(t_map *map);
+void		load_color(t_map *map, char *str, int i);
+void		load_texture(t_map *map, char *str, int i, int dir);
+void		fnl_check(t_map *map, char **args, int *check);
 
 #endif

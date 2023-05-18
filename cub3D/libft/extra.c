@@ -29,7 +29,7 @@ void	ft_putstr(char *str)
 	}
 }
 
-void	s_trim(char *str, int trim_size)
+void	s_trimage(char *str, int trim_size)
 {
 	int	z;
 	int	y;
@@ -63,6 +63,11 @@ void	m_trim(char *str, int start, int end)
 		str[start] = str[end];
 		start++;
 		end++;
+	}
+	while (str[start])
+	{
+		str[start] = '\0';
+		start++;
 	}
 }
 

@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_destroy_display.c                              :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: agoichon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/03 18:56:35 by mg                #+#    #+#             */
-/*   Updated: 2020/10/04 01:55:35 by mg               ###   ########.fr       */
+/*   Created: 2022/06/14 10:59:09 by agoichon          #+#    #+#             */
+/*   Updated: 2022/06/14 11:16:01 by agoichon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "mlx_int.h"
-
-int	mlx_destroy_display(t_xvar *xvar)
+int	ft_strcmp(char *s1, char *s2)
 {
-	XCloseDisplay(xvar->display);
+	int	x;
+
+	x = 0;
+	while (s1[x] != '\0' && s2[x] != '\0')
+	{
+		if (s1[x] != s2[x])
+			return (s1[x] - s2[x]);
+		x++;
+	}
+	return (s1[x] - s2[x]);
 }

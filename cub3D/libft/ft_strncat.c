@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtoulous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: agoichon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/28 16:07:05 by jtoulous          #+#    #+#             */
-/*   Updated: 2023/03/14 10:08:30 by agoichon         ###   ########.fr       */
+/*   Created: 2022/06/15 16:42:41 by agoichon          #+#    #+#             */
+/*   Updated: 2023/03/13 10:17:50 by agoichon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
 {
-	size_t	z;
+	unsigned int	x;
+	unsigned int	dest_strlen;
 
-	if (c > 256)
-		c = c % 256;
-	z = 0;
-	while (s[z])
+	x = 0;
+	dest_strlen = ft_strlen(dest);
+	while (src[x] && nb > x)
 	{
-		if (s[z] == c)
-			return ((char *)s + z);
-		z++;
+		dest[dest_strlen + x] = src[x];
+		x++;
 	}
-	if (s[z] == c)
-		return ((char *)s + z);
-	return (NULL);
+	dest[dest_strlen + x] = '\0';
+	return (dest);
 }

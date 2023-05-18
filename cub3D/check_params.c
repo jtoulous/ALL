@@ -6,39 +6,26 @@
 /*   By: agoichon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 14:10:01 by agoichon          #+#    #+#             */
-/*   Updated: 2023/05/12 10:29:42 by agoichon         ###   ########.fr       */
+/*   Updated: 2023/05/16 09:52:37 by agoichon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "libft/libft.h"
 
-void	check_params(t_map *map, char **argv)
+static char	*megatrim(t_map *map, const char *id, int i)
 {
-	int	i;
-	int	tmp;
+	char	*rtn;
+	char	*tmp;
 
-	map->fd = open(argv[1], O_RDONLY);
-	tmp = map->line;
-	map->line = 0;
-	line_counter(map);
-	close(map->fd);
-	if (map->line - tmp < 6)
-	{
-		free_map(map);
-		printf("Error line \n");
-		exit(0);
-	}
-	map->param_cpy = ft_calloc(sizeof(char *), (map->line - tmp) + 1);
-	i = 0;
-	map->fd = open(argv[1], O_RDONLY);
-	while (i < (map->line - tmp))
-	{
-		map->param_cpy[i] = get_next_line(map->fd);
-		i++;
-	}
-	close(map->fd);
-	init_params(map);
+	tmp = ft_strtrim(map->param_cpy[i], id);
+	rtn = ft_strtrim(tmp, "\n");
+	free (tmp);
+	tmp = ft_strtrim(rtn, "\t");
+	free (rtn);
+	rtn = ft_strtrim(tmp, " ");
+	free (tmp);
+	return (rtn);
 }
 
 void	load_texture(t_map *map, char *str, int i, int dir)
@@ -113,12 +100,12 @@ void	load_color(t_map *map, char *str, int i)
 	if (r > 255 || v > 255 || b > 255)
 	{
 		printf("colors values need to be between 0 and 255\n");
-		free_split(split);
+		free_loop(split);
 		end_game(map);
 	}
 	if (str[0] == 'F')
 		map->floor = (r << 16) | (v << 8) | b;
 	else
 		map->ceiling = (r << 16) | (v << 8) | b;
-	free_split(split);
+	free_loop(split);
 }

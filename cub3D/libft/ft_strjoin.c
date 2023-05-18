@@ -6,7 +6,7 @@
 /*   By: jtoulous <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:18:54 by jtoulous          #+#    #+#             */
-/*   Updated: 2023/01/24 10:03:12 by jtoulous         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:46:43 by agoichon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	stamp(char *dst, char *src)
 	y = 0;
 	while (dst[z])
 		z++;
-	while (src[y])
+	while (src[y] != '\0')
 	{
 		dst[z] = src[y];
 		z++;
@@ -58,14 +58,10 @@ char	*triple_strjoin(char *s1, char *s2, char *s3)
 
 char	*strjoin_n_free(char *s1, char *s2)
 {
-	int	z;
-	int	y;
 	char	*fnl;
-	
-	z = 0;
-	y = 0;
-	fnl = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, 
-		sizeof(char));
+
+	fnl = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1,
+			sizeof(char));
 	if (s1)
 	{	
 		stamp(fnl, s1);

@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_strchr_reverse.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jtoulous <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: agoichon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 14:42:12 by jtoulous          #+#    #+#             */
-/*   Updated: 2023/02/15 15:48:13 by agoichon         ###   ########.fr       */
+/*   Created: 2023/02/14 16:29:59 by agoichon          #+#    #+#             */
+/*   Updated: 2023/02/14 16:34:20 by agoichon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int z)
+#include "libft.h"
+
+char	*ft_strchr_reverse(const char *s, int c)
 {
-	if ((z >= '0' && z <= '9') || z == '-' || z == '+')
-		return (1);
+	size_t	z;
+
+	if (c > 256)
+		c = c % 256;
+	z = 0;
+	while (s[z])
+	{
+		if (s[z] == c)
+			return ((char *)s - s[z]);
+		z++;
+	}
+	if (s[z] == c)
+		return ((char *)s - s[z]);
 	return (0);
 }
