@@ -7,19 +7,19 @@ int main(void)
 
     while (1)
     {
-        std::cout << "watcha wanna do?" << std::endl;
+        std::cout << "\nwatcha wanna do?" << std::endl;
         std::getline(std::cin, input);
-        if (input.compare("ADD") == 0)
+        if (input.compare("ADD") == 0 || input.compare("add") == 0)
             the_book.add();
-        else if (input.compare("SEARCH") == 0)
+        else if (input.compare("SEARCH") == 0 || input.compare("search") == 0)
             the_book.search();
-        else if (input.compare("EXIT") == 0)
+        else if (input.compare("EXIT") == 0 || input.compare("exit") == 0)
         {
-            std::cout << "bye bye" << std::endl;
+            std::cout << "\nbye bye" << std::endl;
             return (0);
         }
         else
-            std::cout << "ADD, SEARCH or EXIT" << std::endl;
+            std::cout << "\nADD, SEARCH or EXIT\n" << std::endl;
     }
     return (0);
 }

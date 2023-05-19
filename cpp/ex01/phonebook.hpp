@@ -106,6 +106,7 @@ void    Phonebook::print_da_line(Contact to_print, int idx)
 
 void    Phonebook::print_da_book()
 {
+    std::cout << std::endl;
     print_da_line(this->Contact_0, 1);
     if (!this->Contact_1.first_name.empty())
         print_da_line(this->Contact_1, 2);
@@ -121,26 +122,37 @@ void    Phonebook::print_da_book()
         print_da_line(this->Contact_6, 7);
     if (!this->Contact_7.first_name.empty())
         print_da_line(this->Contact_7, 8);
+    std::cout << std::endl;
 }
 
 void    Phonebook::search()
 {
-    int wanted;
+    std::string input;
+    int         z;
 
+    z = 0;
     if(this->Contact_0.first_name.empty())
     {   
         std::cout << "no contacts" << std::endl;
         return ;
     }
     print_da_book();
-    std::cout << "enter the number of the target" << std::endl;
-    std::cin >> wanted;
-    if (wanted < 1 || wanted > 8)
+    std::cout << "enter the number of the target:" << std::endl;
+    std::getline(std::cin, input);
+    std::cout << std::endl;
+    while (input[z] - '0' == 0)
+        z++;
+    if (input[z] - '0' < 1 || input[z] - '0' > 8)
     {
-        std::cout << wanted << " not available" << std::endl;
+        std::cout << " sTop DOiNg dRuGs" << std::endl;
         return ;
     }
-    extract_contact(wanted);
+    if (input[z + 1] != '\0')
+    {
+        std::cout << " sTop DOiNg dRuGs" << std::endl;
+        return ;
+    }
+    extract_contact(input[z] - '0');
 }
 
 Contact *Phonebook::latest_entry()
@@ -173,35 +185,37 @@ void    Phonebook::add()
 
     new_contact = this->latest_entry();
 
-    std::cout << "first name?" << std::endl;
+    std::cout << "\n" << "first name?" << std::endl;
     input.clear();
     while (input.empty())
-        std::cin >> input;
+        std::getline(std::cin, input);
     new_contact->first_name = input;
 
-    std::cout << "last name?" << std::endl;
+    std::cout << "\n" << "last name?" << std::endl;
     input.clear();
     while (input.empty())
-        std::cin >> input;
+        std::getline(std::cin, input);
     new_contact->last_name = input;
 
-    std::cout << "nickname?" << std::endl;
+    std::cout << "\n" <<"nickname?" << std::endl;
     input.clear();
     while (input.empty())
-        std::cin >> input;
+        std::getline(std::cin, input);
     new_contact->nickname = input;
     
-    std::cout << "telephone number?" << std::endl;
+    std::cout << "\n" <<"telephone number?" << std::endl;
     input.clear();
     while (input.empty())
-        std::cin >> input;
+        std::getline(std::cin, input);
     new_contact->tel = input;
     
-    std::cout << "darkest secret?" << std::endl;
+    std::cout << "\n" <<"darkest secret?" << std::endl;
     input.clear();
     while (input.empty())
-        std::cin >> input;
+        std::getline(std::cin, input);
     new_contact->dark_s = input;
+
+    std::cout << "\nADDED TO CONTACT LIST" << std::endl;
 }
 
 #endif
