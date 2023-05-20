@@ -4,7 +4,7 @@ CFLAGS	= -Wall -Wextra -Werror -g -std=c++98 -o
 
 SRC		= ./megaphone.cpp
 
-OBJ		= $(SRC:.c= .o)
+OBJ		= $(SRC:.cpp= .o)
 
 all: $(NAME)
 
