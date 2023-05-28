@@ -1,7 +1,7 @@
-NAME	= ClapTrap
+NAME	= Animals
 CC		= g++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -g
-SRC		= ./main.cpp ./ClapTrap.cpp
+SRC		= ./main.cpp ./Animal.cpp ./Cat.cpp ./Dog.cpp
 
 OBJ		= $(SRC:.cpp=.o)
 

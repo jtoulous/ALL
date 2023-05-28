@@ -100,32 +100,40 @@ bool    Fixed::operator!=(const Fixed &to_comp) const
 Fixed    Fixed::operator+(const Fixed &to_add)
 {
     Fixed   res;
+    float   new_raw;
 
-    res.setRawBits(this->getRawBits() + to_add.getRawBits());
+    new_raw = this->toFloat() + to_add.toFloat();
+    res.setRawBits(roundf(new_raw * power(2, 8)));
     return (res);
 }
 
 Fixed   Fixed::operator-(const Fixed &to_sub)
 {
     Fixed   res;
+    float   new_raw;
 
-    res.setRawBits(this->getRawBits() - to_sub.getRawBits());
-    return (res);   
+    new_raw = this->toFloat() - to_sub.toFloat();
+    res.setRawBits(roundf(new_raw * power(2, 8)));
+    return (res);
 }
 
 Fixed   Fixed::operator*(const Fixed &to_mult)
 {
     Fixed   res;
+    float   new_raw;
 
-    res.setRawBits(this->getRawBits() * to_mult.getRawBits());
+    new_raw = this->toFloat() * to_mult.toFloat();
+    res.setRawBits(roundf(new_raw * power(2, 8)));
     return (res);
 }
 
 Fixed   Fixed::operator/(const Fixed &to_div)
 {
     Fixed   res;
+    float   new_raw;
 
-    res.setRawBits(this->getRawBits() / to_div.getRawBits());
+    new_raw = this->toFloat() / to_div.toFloat();
+    res.setRawBits(roundf(new_raw * power(2, 8)));
     return (res);
 }
 
