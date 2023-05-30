@@ -11,7 +11,8 @@ class Animal
             Animal(const Animal &to_copy);
             ~Animal();
             
-            void    makeSound();
+            void                makeSound() const;
+            const std::string   &getType() const;
 
     protected:
                 std::string type;

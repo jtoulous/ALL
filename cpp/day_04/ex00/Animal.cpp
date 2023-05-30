@@ -27,8 +27,16 @@ Animal::~Animal()
               << std::endl;
 }
 
-void    Animal::makeSound()
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
+
+void    Animal::makeSound() const
 {
     std::cout << sound 
               << std::endl;
+}
+
+const std::string   &Animal::getType() const
+{
+    return (type);
 }
