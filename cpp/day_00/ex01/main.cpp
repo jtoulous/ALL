@@ -5,7 +5,7 @@ int main(void)
     Phonebook   the_book;
     std::string input;
 
-    while (1)
+    while (std::cin.good())
     {
         std::cout << "\nwatcha wanna do?" << std::endl;
         std::getline(std::cin, input);
@@ -18,7 +18,7 @@ int main(void)
             std::cout << "\nbye bye" << std::endl;
             return (0);
         }
-        else
+        else if (std::cin.good())
             std::cout << "\nADD, SEARCH or EXIT\n" << std::endl;
     }
     return (0);

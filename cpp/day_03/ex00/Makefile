@@ -1,5 +1,5 @@
 NAME	= ClapTrap
-CC		= g++
+CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -g
 SRC		= ./main.cpp ./ClapTrap.cpp
 

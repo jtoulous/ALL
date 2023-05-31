@@ -10,11 +10,12 @@ class Animal
             Animal(std::string type, std::string in_sound);
             Animal(const Animal &to_copy);
             virtual ~Animal();
-            
             void                makeSound() const;
             const std::string   &getType() const;
 
     protected:
+                virtual int abstract_status() const = 0;
+                
                 std::string type;
                 std::string sound;
 };
