@@ -11,10 +11,11 @@ class Point
             Point(const Point &to_copy);
             ~Point();
             Point   &operator=(const Point &to_affect);
-
+            Fixed   vectorial_product(const Point &vertice, const Point &point) const;
+   
     private: 
-            const Fixed x;
-            const Fixed y;
+            const       Fixed x;
+            const       Fixed y;
 };
 
 #endif
