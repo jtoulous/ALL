@@ -4,17 +4,21 @@
 ///////////  CONSTRUCTORS && DESTROYERS   //////
 ////////////////////////////////////////////////
 
+ClapTrap::ClapTrap()
+: name("default"), hp(10), nrj(10), atck(0)
+{}
+
 ClapTrap::ClapTrap(std::string in_name)
 : name(in_name), hp(10), nrj(10), atck(0)
 {
-  std::cout << "ClapTrap " << name << " has been constructed" 
+  std::cout << "ClapTrap " << name << " has been built" 
             << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap &to_copy)
 :name(to_copy.name), hp(to_copy.hp), nrj(to_copy.nrj), atck(to_copy.atck)
 {
-  std::cout << "ClapTrap " << name << " has been constructed" 
+  std::cout << "ClapTrap " << name << " has been built" 
             << std::endl;
 }
 
@@ -22,6 +26,18 @@ ClapTrap::~ClapTrap()
 {
   std::cout << "ClapTrap " << name << " has been destroyed" 
             << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &ref)
+{
+  if (this != &ref)
+  {
+    name = ref.name;
+    hp = ref.hp;
+    nrj = ref.nrj;
+    atck = ref.atck;
+  }
+  return (*this);
 }
 
 void  ClapTrap::attack(const std::string &target)
@@ -54,7 +70,7 @@ void  ClapTrap::takeDamage(unsigned int amount)
 {
   if (hp <= 0)
   {
-    std::cout << "ClapTrap " << name << " is already dead and burried" 
+    std::cout << "ClapTrap " << name << " is already dead" 
               << std::endl;
     return ;
   }
@@ -90,7 +106,7 @@ void  ClapTrap::beRepaired(unsigned int amount)
   nrj -= 1;
 }
 
-std::string  &ClapTrap::who_is_he()
+std::string  &ClapTrap::getName()
 {
   return (name);
 }

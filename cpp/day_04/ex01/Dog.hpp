@@ -1,8 +1,8 @@
 #ifndef DOG_HPP
 # define DOG_HPP
 
-#include "Animal.hpp"
-#include "Brain.hpp"
+# include "Animal.hpp"
+# include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -11,10 +11,12 @@ class Dog : public Animal
             Dog(const Dog &to_copy);
             ~Dog();
 
-    protected:
-            int abstract_status() const;
+            Dog &operator=(const Dog &ref);
 
-            Brain   *dog_brain;
+            void    makeSound() const;
+            
+    private:        
+            Brain   *brain;
 };
 
 #endif

@@ -1,5 +1,9 @@
 #include "FragTrap.hpp"
 
+FragTrap::FragTrap()
+: ClapTrap("default", 100, 100, 30)
+{}
+
 FragTrap::FragTrap(std::string in_name)
 : ClapTrap(in_name, 100, 100, 30)
 {   
@@ -15,6 +19,18 @@ FragTrap::FragTrap(const FragTrap &to_copy)
 FragTrap::~FragTrap()
 {
     std::cout << "Fragtrap " << name << " has been destroyed" << std::endl;
+}
+
+FragTrap    &FragTrap::operator=(const FragTrap &ref)
+{
+    if (this != &ref)
+    {
+        name = ref.name;
+        hp = ref.hp;
+        nrj = ref.nrj;
+        atck = ref.atck;
+    }
+  return (*this);
 }
 
 ////////////////////////////////////////

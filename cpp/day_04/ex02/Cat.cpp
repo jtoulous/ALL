@@ -1,9 +1,9 @@
 #include "Cat.hpp"
 
 Cat::Cat()
-: Animal("Cat", "Miaouuuu")
+: Animal("Cat")
 {
-    cat_brain = new Brain();
+    brain = new Brain;
     std::cout << "a Cat has been built" 
               << std::endl;
 }
@@ -11,14 +11,28 @@ Cat::Cat()
 Cat::Cat(const Cat &to_copy)
 : Animal(to_copy)
 {
-    cat_brain = new Brain(*to_copy.cat_brain);
-    std::cout << "a Cat has been built" 
-              << std::endl;
+    brain = new Brain(*to_copy.brain);
+    std::cout << "a Cat has been built" << std::endl;
 }
 
 Cat::~Cat()
 {
-    delete (cat_brain);
-    std::cout << "a Cat has been destroyed" 
-              << std::endl;
+      delete brain;
+      std::cout << "a Cat has been destroyed" 
+                << std::endl;
+}
+
+Cat &Cat::operator=(const Cat &ref)
+{
+    if (this != &ref)
+        type = ref.type;
+    if (brain != NULL)
+        delete brain;
+    brain = new Brain(*ref.brain);
+    return (*this);
+}
+
+void    Cat::makeSound() const
+{
+    std::cout << "Cat sound" << std::endl;
 }

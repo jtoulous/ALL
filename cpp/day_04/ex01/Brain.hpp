@@ -7,11 +7,13 @@ class Brain
 {
     public:
             Brain();
-            Brain(const Brain &to_copy);
+            Brain(Brain &to_copy);
             ~Brain();
 
+            Brain       &operator=( Brain &ref);
+
     protected:
-            std::string *ideas;
+            std::string ideas[100];
 };
 
 #endif

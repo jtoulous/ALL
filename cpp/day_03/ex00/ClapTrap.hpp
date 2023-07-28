@@ -6,13 +6,16 @@
 class ClapTrap
 {
   public:
+          ClapTrap();
           ClapTrap(std::string in_name);
-          ClapTrap(ClapTrap &to_copy);
+          ClapTrap (ClapTrap &ref);
           ~ClapTrap();
+          ClapTrap &operator=(const ClapTrap &ref);
+
           void          attack(const std::string &target);
           void          takeDamage(unsigned int amount);
           void          beRepaired(unsigned int amount);
-          std::string   &who_is_he();
+          std::string   &getName();
 
   private:
           std::string name;

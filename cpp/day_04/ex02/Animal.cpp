@@ -1,21 +1,21 @@
 #include "Animal.hpp"
 
 Animal::Animal()
-: type("unknown species"), sound("")
+: type("unknown species") 
 {
     std::cout << "an Animal has been built " 
               << std::endl;
 }
 
-Animal::Animal(std::string in_type, std::string in_sound)
-: type(in_type), sound(in_sound)
+Animal::Animal(std::string in_type)
+: type(in_type)
 {
     std::cout << "an Animal has been built " 
               << std::endl;
 }
 
 Animal::Animal(const Animal &to_copy)
-: type(to_copy.type), sound(to_copy.sound)
+: type(to_copy.type)
 {
     std::cout << "an Animal has been built " 
               << std::endl;
@@ -23,21 +23,19 @@ Animal::Animal(const Animal &to_copy)
 
 Animal::~Animal()
 {
-    std::cout << "an Animal has been destroyed" 
+    std::cout << "an Animal has been destroyed"
               << std::endl;
 }
 
-//////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////
-
-void    Animal::makeSound() const
+Animal  &Animal::operator=(const Animal &ref)
 {
-    if (!sound.empty())
-    {    
-        std::cout << sound 
-                  << std::endl;
-    }
+    if (this != &ref)
+        type = ref.type;
+    return (*this);
 }
+
+//////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////
 
 const std::string   &Animal::getType() const
 {

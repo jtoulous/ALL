@@ -10,5 +10,6 @@ int main(void)
     second.announce();
     randomChump("random");
     ptr = newZombie("alloked");
+    ptr->announce();
     delete (ptr);
 }

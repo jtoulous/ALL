@@ -1,22 +1,10 @@
 #include <iostream>
-
-void    to_upper(char *str)
-{
-    int z = 0;
-
-    if (!str)
-        return ;
-    while (str[z])
-    {
-        if (str[z] >= 'a' && str[z] <= 'z')
-            str[z] -= 32;
-        z++;
-    }
-}
+#include <algorithm>
 
 int main(int argc, char **argv)
 {
-    int z = 1;
+    int         z = 1;
+    std::string tmp;
 
     if (argc <= 1)
     {
@@ -25,8 +13,9 @@ int main(int argc, char **argv)
     }
     while (argv[z])
     {
-        to_upper(argv[z]);
-        std::cout << argv[z];
+        tmp = argv[z];
+        std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::toupper);
+        std::cout << tmp;
         z++;
     }
     std::cout << std::endl;

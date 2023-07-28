@@ -10,8 +10,13 @@ class Cat : public Animal
             Cat();
             Cat(const Cat &to_copy);
             ~Cat();
-    protected:
-            Brain   *cat_brain;
+
+            Cat &operator=(const Cat &ref);
+
+            void    makeSound() const;
+
+    private:
+            Brain   *brain;
 };
 
 #endif

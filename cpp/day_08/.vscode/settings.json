@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "*.tpp": "cpp",
+        "functional": "cpp",
+        "iostream": "cpp",
+        "iterator": "cpp",
+        "deque": "cpp"
+    }
+}

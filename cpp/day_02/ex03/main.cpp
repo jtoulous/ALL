@@ -28,12 +28,12 @@ bool bsp(const Point a, const Point b, const Point c, const Point point)
         return (false);
     if (res1 > 0)
     {
-        if (res2 < 0 || res3 < 0)
+        if (res2 <= 0 || res3 <= 0)
             return (false);
     }
     if (res1 < 0)
     {
-        if (res2 > 0 || res3 > 0)
+        if (res2 >= 0 || res3 >= 0)
             return (false);
     }
     return (true);
@@ -42,14 +42,39 @@ bool bsp(const Point a, const Point b, const Point c, const Point point)
 int main( void ) 
 {
 
-    const Point a(1.2, 0.8);
-    const Point b(2.6, 4.6);
-    const Point c(7.6, 3.1);
-    const Point p(1.7, 2.4);
+    const Point a(3, 3);
+    const Point b(5, 5);
+    const Point c(6, 2);
+    const Point p1(4, 4);
+    const Point p2(4.51, 4.36);
+    const Point p3(4.37, 2.82);
+    const Point p4(5 ,3);
+    const Point p5(5.63293, 3.99164);
 
-    if (bsp(a, b, c, p))
-        std::cout << "good" << std::endl;
+    if (bsp(a, b, c, p1))
+        std::cout << "p1 is in" << std::endl;
     else
-        std::cout << "no good" << std::endl;
-    return 0;
+        std::cout << "p1 is out" << std::endl;
+        
+    if (bsp(a, b, c, p2))
+        std::cout << "p2 is in" << std::endl;
+    else
+        std::cout << "p2 is out" << std::endl;
+
+    if (bsp(a, b, c, p3))
+        std::cout << "p3 is in" << std::endl;
+    else
+        std::cout << "p3 is out" << std::endl;
+
+    if (bsp(a, b, c, p4))
+        std::cout << "p4 is in" << std::endl;
+    else
+        std::cout << "p4 is out" << std::endl;
+
+    if (bsp(a, b, c, p5))
+        std::cout << "p5 is in" << std::endl;
+    else
+        std::cout << "p5 is out" << std::endl;
+
+    return (0);
 }

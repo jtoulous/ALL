@@ -7,8 +7,10 @@ int main()
 {
     int             z = 0;
     Animal          **cats_n_dogs;
-    const Animal    *iench = new Dog();
-    const Animal    *chatte = new Cat();
+    const Animal    *dog = new Dog();
+    const Animal    *cat = new Cat();
+    //Animal          test("cow");
+
     
     /////////   REQUIRED     ///////////////
     cats_n_dogs = new Animal*[10];
@@ -32,12 +34,12 @@ int main()
     //////////////////////////////////////////////
     
 
-    iench->makeSound();
-    chatte->makeSound();
-    std::cout << "iench is a " << iench->getType() << std::endl;
-    std::cout << "chatte is a " << chatte->getType() << std::endl;
-    delete (iench);
-    delete (chatte);
+    dog->makeSound();
+    cat->makeSound();
+    std::cout << "dog is a " << dog->getType() << std::endl;
+    std::cout << "cat is a " << cat->getType() << std::endl;
+    delete (dog);
+    delete (cat);
 
     return (0);
 }

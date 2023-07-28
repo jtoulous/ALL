@@ -7,8 +7,8 @@ class Fixed
 {
     public:
             Fixed();
-            Fixed(const Fixed &to_copy);
-            Fixed &operator=(const Fixed &to_affect);
+            Fixed(const Fixed &ref);
+            Fixed &operator=(const Fixed &ref);
             ~Fixed();
             int getRawBits(void) const;
             void setRawBits(int const raw);

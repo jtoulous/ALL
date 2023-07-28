@@ -1,25 +1,28 @@
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
+#include <string>
 
-int main(void)
+int main()
 {
     Phonebook   the_book;
     std::string input;
 
     while (std::cin.good())
     {
-        std::cout << "\nwatcha wanna do?" << std::endl;
+        std::cout << "\nTell me daddy" 
+                  << std::endl;
         std::getline(std::cin, input);
-        if (input.compare("ADD") == 0 || input.compare("add") == 0)
+        
+        if (input.compare("ADD") == 0)
             the_book.add();
-        else if (input.compare("SEARCH") == 0 || input.compare("search") == 0)
+        
+        else if (input.compare("SEARCH") == 0)
             the_book.search();
-        else if (input.compare("EXIT") == 0 || input.compare("exit") == 0)
-        {
-            std::cout << "\nbye bye" << std::endl;
+        
+        else if (input.compare("EXIT") == 0)
             return (0);
-        }
-        else if (std::cin.good())
-            std::cout << "\nADD, SEARCH or EXIT\n" << std::endl;
+        
+        else
+            std::cout << "ADD, SEARCH OR EXIT\n" << std::endl;
     }
     return (0);
 }

@@ -5,6 +5,10 @@
 ///////////     BUILDERS   ///////////////////
 //////////////////////////////////////////////
 
+ScavTrap::ScavTrap()
+: ClapTrap("default", 100, 50, 20)
+{}
+
 ScavTrap::ScavTrap(std::string name)
 : ClapTrap(name, 100, 50, 20)
 { 
@@ -20,6 +24,18 @@ ScavTrap::ScavTrap(const ScavTrap &to_copy)
 ScavTrap::~ScavTrap()
 {
     std::cout << "ScavTrap " << name << " has been destroyed" << std::endl;
+}
+
+ScavTrap    &ScavTrap::operator=(const ScavTrap &ref)
+{
+    if (this != &ref)
+    {
+        name = ref.name;
+        hp = ref.hp;
+        nrj = ref.nrj;
+        atck = ref.atck;
+    }
+  return (*this);
 }
 
 //////////////////////////////////////////

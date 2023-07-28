@@ -4,6 +4,10 @@
 ///////////  CONSTRUCTORS && DESTROYERS   //////
 ////////////////////////////////////////////////
 
+ClapTrap::ClapTrap()
+: name("default"), hp(10), nrj(10), atck(0)
+{}
+
 ClapTrap::ClapTrap(std::string in_name)
 : name(in_name), hp(10), nrj(10), atck(0)
 {
@@ -29,6 +33,18 @@ ClapTrap::~ClapTrap()
 {
   std::cout << "ClapTrap " << name << " has been destroyed" 
             << std::endl;
+}
+
+ClapTrap &ClapTrap::operator=(const ClapTrap &ref)
+{
+  if (this != &ref)
+  {
+    name = ref.name;
+    hp = ref.hp;
+    nrj = ref.nrj;
+    atck = ref.atck;
+  }
+  return (*this);
 }
 
 ///////////////////////////////////////////////////
@@ -97,7 +113,7 @@ void  ClapTrap::beRepaired(unsigned int amount)
   nrj -= 1;
 }
 
-std::string  &ClapTrap::who_is_he()
+std::string  &ClapTrap::getName()
 {
   return (name);
 }

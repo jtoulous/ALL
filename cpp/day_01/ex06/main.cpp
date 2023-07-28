@@ -2,16 +2,15 @@
 
 static int  evaluate_madness(std::string tolerance)
 {
-    if (tolerance.empty())
-        return (0);
-    if (tolerance == "DEBUG")
-        return (1);
-    if (tolerance == "INFO")
-        return (2);
-    if (tolerance == "WARNING")
-        return (3);
-    if (tolerance == "ERROR")
-        return (4);
+    int z = 0;
+    std::string lvls[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+    while (z < 4)
+    {
+        if (tolerance.compare(lvls[z]) == 0)
+            return (z + 1);
+        z++;
+    }
     return (0);
 }
 
@@ -36,19 +35,16 @@ int main(int argc, char **argv)
                 break;
         case 1:
                 harl.complain("DEBUG");
-                harl.complain("INFO");
-                harl.complain("WARNING");
-                harl.complain("ERROR");
-                break;
+                __attribute__((fallthrough));
+                
         case 2:
                 harl.complain("INFO");
-                harl.complain("WARNING");
-                harl.complain("ERROR");
-                break;
+                __attribute__((fallthrough));
+
         case 3:
                 harl.complain("WARNING");
-                harl.complain("ERROR");
-                break;
+                __attribute__((fallthrough));
+
         case 4:
                 harl.complain("ERROR");
     }

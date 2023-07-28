@@ -1,7 +1,7 @@
 #include "Dog.hpp"
 
 Dog::Dog()
-: Animal("Dog", "Woof Woof Woof")
+: Animal("Dog")
 {
     std::cout << "a Dog has been built" << std::endl;
 }
@@ -15,4 +15,16 @@ Dog::Dog(const Dog &to_copy)
 Dog::~Dog()
 {
     std::cout << "a Dog has been destroyed" << std::endl; 
+}
+
+Dog &Dog::operator=(const Dog &ref)
+{
+    if (this != &ref)
+        type = ref.type;
+    return (*this);
+}
+
+void    Dog::makeSound() const
+{
+    std::cout << "Dog sound" << std::endl;
 }

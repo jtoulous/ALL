@@ -1,5 +1,8 @@
 #include "Harl.hpp"
 
+Harl::Harl()
+{}
+
 void Harl::complain(std::string level)
 {
     static void (Harl::*fonctions[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};

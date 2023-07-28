@@ -11,11 +11,10 @@ int main()
 
     jc.attack(bo.get_name());
     bo.takeDamage(30);
-    as.takeDamage(9);
-    as.takeDamage(2);
+    as.takeDamage(100);
     as.attack(mk.get_name());
     as.beRepaired(5);
-    mk.takeDamage(100);
+    mk.takeDamage(99);
     mk.beRepaired(4);
-    as.highFivesGuys();
+    mk.highFivesGuys();
 }

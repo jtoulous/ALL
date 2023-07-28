@@ -9,6 +9,6 @@ int main( void )
     c = b;
     std::cout << a.getRawBits() << "\n"
               << b.getRawBits() << "\n"
-              << c.getRawBits() << "\n";
+              << c.getRawBits() << std::endl;
     return (0);
 }

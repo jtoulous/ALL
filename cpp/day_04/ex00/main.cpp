@@ -5,21 +5,34 @@
 
 int main()
 {
-    const Animal   *iench = new Dog();
-    const Animal   *chatte = new Cat();
-    Animal          Animal;
-    WrongAnimal     w_animal;
-    WrongCat        w_cat;
+    
+    {
+        std::cout << "///     FIRST MAIN      ///\n" << std::endl;
 
-    iench->makeSound();
-    chatte->makeSound();
-    Animal.makeSound();
-    w_animal.makeSound();
-    w_cat.makeSound();
-    std::cout << "w_animal is a " << w_animal.getType() << std::endl;
-    std::cout << "w_cat is a " << w_cat.getType() << std::endl;
-    std::cout << "iench is a " << iench->getType() << std::endl;
-    std::cout << "chatte is a " << chatte->getType() << std::endl;
-    delete (iench);
-    delete (chatte);
+        const Animal* meta = new Animal();
+        const Animal* j = new Dog();
+        const Animal* i = new Cat();
+        std::cout << j->getType() << " " << std::endl;
+        std::cout << i->getType() << " " << std::endl;
+        i->makeSound(); 
+        j->makeSound();
+        meta->makeSound();
+        delete meta;
+        delete j;
+        delete i;
+    }
+
+    {
+        std::cout << "\n\n///     SECOND MAIN      ///\n" << std::endl;
+        
+        
+        const WrongAnimal* meta = new WrongAnimal();
+        const WrongAnimal* i = new WrongCat();
+        std::cout << i->getType() << " " << std::endl;
+        i->makeSound(); 
+        meta->makeSound();
+        delete meta;
+        delete i;
+    }
+    return (0);
 }

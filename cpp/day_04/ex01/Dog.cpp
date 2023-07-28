@@ -1,28 +1,36 @@
 #include "Dog.hpp"
 
 Dog::Dog()
-: Animal("Dog", "Woof Woof Woof")
+: Animal("Dog")
 {
-    dog_brain = new Brain();
-    std::cout << "a Dog has been built" 
-              << std::endl;
+    brain = new Brain;
+    std::cout << "a Dog has been built" << std::endl;
 }
 
 Dog::Dog(const Dog &to_copy)
 : Animal(to_copy)
 {
-    dog_brain = new Brain(*to_copy.dog_brain);
-    std::cout << "a Dog has been built" 
-              << std::endl;
+    brain = new Brain(*to_copy.brain);
+    std::cout << "a Dog has been built" << std::endl;
 }
 
 Dog::~Dog()
 {
-    delete (dog_brain);
+    delete brain;
     std::cout << "a Dog has been destroyed" << std::endl; 
 }
 
-int Dog::abstract_status() const
+Dog &Dog::operator=(const Dog &ref)
 {
-    return (0);
+    if (this != &ref)
+        type = ref.type;
+    if (brain != NULL)
+        delete brain;
+    brain = new Brain(*ref.brain);    
+    return (*this);
+}
+
+void    Dog::makeSound() const
+{
+    std::cout << "Dog sound" << std::endl;
 }

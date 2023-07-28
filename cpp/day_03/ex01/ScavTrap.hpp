@@ -6,9 +6,12 @@
 class ScavTrap : public ClapTrap
 {
     public:
+            ScavTrap();
             ScavTrap(std::string name);
             ScavTrap(const ScavTrap &to_copy);
             ~ScavTrap();
+            ScavTrap    &operator=(const ScavTrap &ref);
+
             void    attack(const std::string &target);
             void    guardGate();
 };

@@ -11,10 +11,12 @@ class Cat : public Animal
             Cat(const Cat &to_copy);
             ~Cat();
 
-    protected:
-            int abstract_status() const;
-            
-            Brain   *cat_brain;
+            Cat &operator=(const Cat &ref);
+
+            void    makeSound() const;
+
+    private:
+            Brain   *brain;
 };
 
 #endif

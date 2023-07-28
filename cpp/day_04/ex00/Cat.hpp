@@ -9,6 +9,10 @@ class Cat : public Animal
             Cat();
             Cat(const Cat &to_copy);
             ~Cat();
+
+            Cat &operator=(const Cat &ref);
+
+            void    makeSound() const;
 };
 
 #endif
