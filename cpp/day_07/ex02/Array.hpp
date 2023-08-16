@@ -1,7 +1,7 @@
 #pragma once
 
 #include <cstdlib>
-#include <exception>
+#include "String_2_guerre.hpp"
 
 template <typename T>
 class Array
@@ -50,8 +50,15 @@ class Array
             
             T   &operator[](unsigned int index)
             {
+                String  tmp;  
+
                 if (index >= this->size())
-                        throw std::exception();
+                {
+                        tmp = "index ";
+                        tmp.push_back(index + '0');
+                        tmp += ", is superior to the size of the array";
+                        throw (Xception(tmp));
+                }
                 return (array[index]);
             }
 

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "Array.hpp"
-#include "../../../utils/string_2_guerre/String_2_guerre.hpp"
+#include "String_2_guerre.hpp"
 
 int main(void)
 {
@@ -17,11 +17,10 @@ int main(void)
             std::cout << test[z] << std::endl;
         }
     }
-    catch (std::exception &e)
+    catch (Xception &e)
     {
-        std::cout << "index " << z << ", is superior to the size of the array" << std::endl;
+        std::cout << e.what() << std::endl;
     }
-    
     
     {
         Array<String>   test3;

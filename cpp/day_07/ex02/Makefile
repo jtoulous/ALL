@@ -1,7 +1,7 @@
 NAME	= ex02
 CC		= c++
 CFLAGS	= -Wall -Wextra -Werror -std=c++98 -g
-SRC		=  ./main.cpp ../../../utils/string_2_guerre/String_2_guerre.cpp
+SRC		=  ./main.cpp ./String_2_guerre.cpp
 
 OBJ		= $(SRC:.cpp=.o)
 
